@@ -29,7 +29,7 @@
   "repository": {
     "github": "https://github.com/Tiramitzu/katarina"
   },
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "keywords": [
     "node",
     "glitch",
