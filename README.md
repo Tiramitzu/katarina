@@ -4,7 +4,7 @@
 ```
 Example of a Music Bot project modified by Tiramitzu, made by galnir
 ```
-This Bot is dedicated for open source of our community. Written in [Discord.JS](https://discord.js.org/#/) at version [12.2.0](https://discord.js.org/#/docs/main/stable/general/welcome).
+This Bot is dedicated for open source of our community. Written in [Discord.JS](https://discord.js.org/#/) at version [12.2.0](https://discord.js.org/#/docs/main/stable/general/welcome) & [Discord-Akairo](https://discord-akairo.github.io/#/) at version [8.0.0](https://discord-akairo.github.io/#/docs/main/master/general/welcome).
 
 ### Required Module/Package
 ```
