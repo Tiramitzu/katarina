@@ -19,7 +19,9 @@
     "dotenv": "^8.2.0",
     "chalk": "^4.0.0",
     "moment": "^2.25.3",
-    "moment-duration-format": "^2.2.2"
+    "moment-duration-format": "^2.2.2",
+    "node-superfetch": "^0.1.10",
+    "cheerio": "^0.22.0"
   },
   "engines": {
     "node": "12.x"
