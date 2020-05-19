@@ -28,8 +28,6 @@ class KatarinaClient extends AkairoClient {
       }
     );
 
-    this.database = new require("./Database");
-
     this.commandHandler = new CommandHandler(this, {
       directory: path.join(__dirname, "..", "commands"),
       aliasReplacement: /-/g,
