@@ -44,7 +44,8 @@ cheerio@0.22.0
 
 ### Author
 
-**Master-Bot** ©[galnir](https://github.com/galnir), Released under the [GNU General Public License v3.0](https://github.com/galnir/Master-Bot/blob/master/LICENSE) & [Apache License 2.0](https://github.com/Tiramitzu/katarina/blob/master/LICENSE.md) License.<br>
+**Master-Bot** ©[galnir](https://github.com/galnir), Released under the [GNU General Public License v3.0](https://github.com/galnir/Master-Bot/blob/master/LICENSE) License.<br>
+**Katarina Claes** ©[Tiramitzu](https://github.com/Tiramitzu), Released under the [Apache License 2.0](https://github.com/Tiramitzu/katarina/blob/master/LICENSE.md) License.<br>
 Authored and maintained by galnir. Modified by [Tiramitzu](https://github.com/Tiramitzu)
 
 > GitHub [@Tiramitzu](https://github.com/Tiramitzu)
