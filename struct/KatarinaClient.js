@@ -17,7 +17,7 @@ class KatarinaClient extends AkairoClient {
         messageCacheMaxSize: 50,
         messageCacheLifetime: 300,
         messageSweepInterval: 900,
-        disableEveryone: true,
+        disableMentions: "everyone",
         disabledEvents: ["TYPING_START"],
         partials: ["MESSAGE"]
       },
@@ -29,7 +29,8 @@ class KatarinaClient extends AkairoClient {
       }
     );
 
-    this.database = new require("./Database");
+    this.db = new require("./Database");
+    this.snek = require('node-superfetch');
 
     this.commandHandler = new CommandHandler(this, {
       directory: path.join(__dirname, "..", "commands"),

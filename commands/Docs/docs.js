@@ -1,5 +1,5 @@
 const { Command } = require("discord-akairo");
-const { qs } = require("querystring");
+const qs = require("querystring");
 const SOURCES = [
   "stable",
   "master",
@@ -12,7 +12,7 @@ const SOURCES = [
   "11.5.1",
   "collection"
 ];
-const fetch = require("node-superfetch");
+const fetch = require("node-fetch");
 
 const DocsCommandArguments = {
   source: String,

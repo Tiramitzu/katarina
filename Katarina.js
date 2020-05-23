@@ -1,4 +1,5 @@
 const { Collection, Structures } = require("discord.js");
+require("./server");
 require("./util/Extensions");
 
 Structures.extend("Guild", function(Guild) {
@@ -16,6 +17,7 @@ Structures.extend("Guild", function(Guild) {
         isTriviaRunning: false,
         wasTriviaEndCalled: false,
         triviaQueue: [],
+        userGuessed: new Map(),
         triviaScore: new Map()
       };
     }
@@ -29,8 +31,8 @@ const Logger = require("./util/Logger");
 const client = new KatarinaClient();
 
 client
-  .on("disconnect", () => Logger.warn("Connection lost..."))
-  .on("reconnect", () => Logger.info("Attempting to reconnect..."))
+  .on("shardDisconnect", () => Logger.warn("Connection lost..."))
+  .on("shardReconnect", () => Logger.info("Attempting to reconnect..."))
   .on("error", err => Logger.error(err))
   .on("warn", info => Logger.warn(info));
 

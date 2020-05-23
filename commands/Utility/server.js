@@ -8,9 +8,9 @@ var verificationLevels = {
   MEDIUM:
     "**Medium** (`Must also registered on Discord for longer than 5 minutes`)",
   HIGH:
-    "**High** [**(╯°□°）╯︵ ┻━┻**] (`Must also registered on Discord for longer than 10 minutes`)",
-  EXTREME:
-    "**Extreme** [**┻━┻彡 ヽ(ಠ益ಠ)ノ彡┻━┻**] (`Must have a verified phone on their Discord account`)"
+    "**(╯°□°）╯︵ ┻━┻** (**High**) (`Must also registered on Discord for longer than 10 minutes`)",
+  VERY_HIGH:
+    "**┻━┻彡 ヽ(ಠ益ಠ)ノ彡┻━┻** (**Very High**) (`Must have a verified phone on their Discord account`)"
 };
 var region = {
   brazi: " :flag_br: **| Brazil**",

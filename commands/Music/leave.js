@@ -21,7 +21,7 @@ class LeaveCommand extends Command {
       return message.reply('There is no song playing right now!');
     }
     if (!message.guild.musicData.queue)
-      return message.channel.send('There are no songs in queue');
+      return message.util.send('There are no songs in queue');
     message.guild.musicData.songDispatcher.end();
     message.guild.musicData.queue.length = 0;
     return;

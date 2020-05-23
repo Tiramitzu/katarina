@@ -1,0 +1,44 @@
+{
+  "songs": [
+    {
+      "url": "https://www.youtube.com/watch?v=0yW7w8F2TVA",
+      "artist": "James Arthur",
+      "title": "Say you won't let go"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LHCob76kigA",
+      "artist": "Lukas Graham",
+      "title": "7 Years"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=bCuhuePlP8o",
+      "artist": "Lewis Capaldi",
+      "title": "Someone You Loved"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=RE87rQkXdNw",
+      "artist": "Marshmello",
+      "title": "Happier"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Y2E71oe0aSM",
+      "artist": "Dan + Shay, Justin Bieber",
+      "title": "10,000 Hours"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_zwLZ5g_Zxg",
+      "artist": "Hanatan",
+      "title": "Kokoronashi"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=UZwi9SHgzGY",
+      "artist": "Juice Wrld, Ellie Goulding",
+      "title": "Hate Me"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=r9o1QS-itsU",
+      "artist": "Sarah Jeffery",
+      "title": "Queen Of Mean"
+    }
+  ]
+}

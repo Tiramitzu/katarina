@@ -35,6 +35,7 @@ class PlayCommand extends Command {
   }
 
   async exec(message, { query }) {
+    const author = message.author;
     const voiceChannel = message.member.voice.channel;
     if (!voiceChannel)
       return message.channel.send("Join a channel and try again");
@@ -66,7 +67,7 @@ class PlayCommand extends Command {
         // if (message.guild.musicData.queue.length < 10) {
         //
         message.guild.musicData.queue.push(
-          PlayCommand.constructSongObj(video, voiceChannel)
+          PlayCommand.constructSongObj(video, voiceChannel, author)
         );
         // } else {
         //   return message.channel.send(
@@ -124,36 +125,58 @@ class PlayCommand extends Command {
     }
 
     // if user provided a song/video name
-    const videos = await youtube.searchVideos(query, 5).catch(function() {
+    const videos = await youtube.searchVideos(query, 10).catch(function() {
       return message.channel.send(
         "There was a problem searching the video you requested :("
       );
     });
-    if (videos.length < 5) {
+    if (videos.length < 10) {
       return message.channel.send(
         `I had some trouble finding what you were looking for, please try again or be more specific`
       );
     }
     const vidNameArr = [];
     for (let i = 0; i < videos.length; i++) {
-      vidNameArr.push(`${i + 1}: ${videos[i].title}`);
+      vidNameArr.push(`${videos[i].title}`);
     }
     vidNameArr.push("exit");
     const embed = this.client.util
       .embed()
       .setColor("#2f3136")
-      .setTitle("Choose a song by commenting a number between 1 and 5")
-      .addField("Song 1", vidNameArr[0])
-      .addField("Song 2", vidNameArr[1])
-      .addField("Song 3", vidNameArr[2])
-      .addField("Song 4", vidNameArr[3])
-      .addField("Song 5", vidNameArr[4])
-      .addField("Exit", "exit");
+      .setAuthor("Katarin Song Selection.", this.client.user.displayAvatarURL())
+      .setDescription(
+        `Choose a song by commenting a number between 1 and 10
+
+Song 1  : ${vidNameArr[0]}
+
+Song 2  : ${vidNameArr[1]}
+
+Song 3  : ${vidNameArr[2]}
+
+Song 4  : ${vidNameArr[3]}
+
+Song 5  : ${vidNameArr[4]}
+
+Song 6  : ${vidNameArr[5]}
+
+Song 7  : ${vidNameArr[6]}
+
+Song 8  : ${vidNameArr[7]}
+
+Song 9  : ${vidNameArr[8]}
+
+Song 10 : ${vidNameArr[9]}
+
+
+Type \`exit\` to exit menu and cancel song selection.`
+      )
+      .setFooter("Requested By: " + message.author.tag)
+      .setTimestamp();
     var songEmbed = await message.util.send({ embed });
     message.channel
       .awaitMessages(
         function(msg) {
-          return (msg.content > 0 && msg.content < 6) || msg.content === "exit";
+          return (msg.content > 0 && msg.content < 11) || msg.content === "exit";
         },
         {
           max: 1,
@@ -163,7 +186,10 @@ class PlayCommand extends Command {
       )
       .then(function(response) {
         const videoIndex = parseInt(response.first().content);
-        if (response.first().content === "exit") return songEmbed.delete();
+        if (response.first().content === "exit") {
+          songEmbed.channel.send("Song selection canceled.");
+          return songEmbed.delete();
+        }
         youtube
           .getVideoByID(videos[videoIndex - 1].id)
           .then(function(video) {
@@ -187,7 +213,7 @@ class PlayCommand extends Command {
             //   );
             // }
             message.guild.musicData.queue.push(
-              PlayCommand.constructSongObj(video, voiceChannel)
+              PlayCommand.constructSongObj(video, voiceChannel, author)
             );
             if (message.guild.musicData.isPlaying == false) {
               message.guild.musicData.isPlaying = true;
@@ -216,7 +242,7 @@ class PlayCommand extends Command {
           songEmbed.delete();
         }
         return message.channel.send(
-          "Please try again and enter a number between 1 and 5 or exit"
+          "Please try again and enter a number between 1 and 10 or exit"
         );
       });
   }
@@ -236,11 +262,17 @@ class PlayCommand extends Command {
             message.guild.musicData.songDispatcher = dispatcher;
             dispatcher.setVolume(message.guild.musicData.volume);
             const videoEmbed = new MessageEmbed()
-              .setThumbnail(queue[0].thumbnail)
+              .setImage(queue[0].thumbnail)
+              .setTitle("Now Playing " + queue[0].title)
+              .setURL(queue[0].url)
+              .setDescription("Duration: " + queue[0].duration)
               .setColor("#2f3136")
-              .addField("Now Playing:", queue[0].title)
-              .addField("Duration:", queue[0].duration);
-            if (queue[1]) videoEmbed.addField("Next Song:", queue[1].title);
+              .setFooter("Requested By: " + message.author.tag)
+              .setTimestamp();
+            if (queue[1])
+              videoEmbed.setDescription(`Duration: ${queue[0].duration}
+Next Song:
+**${queue[1].title}**`);
             message.channel.send(videoEmbed);
             message.guild.musicData.nowPlaying = queue[0];
             return queue.shift();
@@ -252,6 +284,9 @@ class PlayCommand extends Command {
               message.guild.musicData.isPlaying = false;
               message.guild.musicData.nowPlaying = null;
               message.guild.musicData.songDispatcher = null;
+              message.channel.send(
+                "There's no song in queue (add more song to play), leaving channel."
+              );
               return message.guild.me.voice.channel.leave();
             }
           })
@@ -270,7 +305,7 @@ class PlayCommand extends Command {
         return message.guild.me.voice.channel.leave();
       });
   }
-  static constructSongObj(video, voiceChannel) {
+  static constructSongObj(video, voiceChannel, author) {
     let duration = this.formatDuration(video.duration);
     if (duration == "00:00") duration = "Live Stream";
     return {
@@ -279,7 +314,8 @@ class PlayCommand extends Command {
       rawDuration: video.duration,
       duration,
       thumbnail: video.thumbnails.high.url,
-      voiceChannel
+      voiceChannel,
+      author
     };
   }
   // prettier-ignore

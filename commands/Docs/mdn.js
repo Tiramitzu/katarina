@@ -1,5 +1,5 @@
 const { Command } = require("discord-akairo")
-const fetch = require('node-superfetch');
+const fetch = require('node-fetch');
 const qs = require('querystring');
 const Turndown = require('turndown');
 
