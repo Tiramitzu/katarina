@@ -8,7 +8,6 @@ const {
 const { Collection, Structures } = require("discord.js");
 const path = require("path");
 const Enmap = require("enmap");
-require("dotenv").config()
 
 class KatarinaClient extends AkairoClient {
   constructor() {
@@ -27,10 +26,7 @@ class KatarinaClient extends AkairoClient {
         return Array.isArray(this.ownerID)
           ? this.ownerID.includes(id)
           : id === this.ownerID;
-      },
-      function test(num)
-      const guild = this.guilds.cache.get(num)
-      return guild.name
+      }
     );
 
     this.db = new require("./Database");
