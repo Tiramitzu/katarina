@@ -1,6 +1,8 @@
 const { Collection, Structures } = require("discord.js");
+const { ErelaClient } = require("erela.js")
 require("./server");
 require("./util/Extensions");
+require("dotenv").config()
 
 Structures.extend("Guild", function(Guild) {
   class MusicGuild extends Guild {
@@ -24,6 +26,16 @@ Structures.extend("Guild", function(Guild) {
   }
   return MusicGuild;
 });
+
+client.music = ErelaClient(client, [
+  {
+    host: "localhost",
+    port: 7777,
+    password: process.env.PASSWORD
+  }
+])
+
+client.music.on("nodeConnect", node => console.log(node))
 
 const KatarinaClient = require("./struct/KatarinaClient");
 const Logger = require("./util/Logger");
