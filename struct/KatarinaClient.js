@@ -7,6 +7,7 @@ const {
 } = require("discord-akairo");
 const { Collection, Structures } = require("discord.js");
 const path = require("path");
+require("dotenv").config()
 
 class KatarinaClient extends AkairoClient {
   constructor() {
@@ -43,15 +44,15 @@ class KatarinaClient extends AkairoClient {
         prompt: {
           modifyStart: (msg, text) =>
             text &&
-            `${msg.author} **::** ${text}\nType \`cancel\` to cancel this command.`,
+            `${msg.author} **||** ${text}\nType \`cancel\` to cancel this command.`,
           modifyRetry: (msg, text) =>
             text &&
-            `${msg.author} **::** ${text}\nType \`cancel\` to cancel this command.`,
+            `${msg.author} **||** ${text}\nType \`cancel\` to cancel this command.`,
           timeout: msg =>
-            `${msg.author} **::** Time ran out, command has been cancelled.`,
+            `${msg.author} **||** Time ran out, command has been cancelled.`,
           ended: msg =>
-            `${msg.author} **::** Too many retries, command has been cancelled.`,
-          cancel: msg => `${msg.author} **::** Command has been cancelled.`,
+            `${msg.author} **||** Too many retries, command has been cancelled.`,
+          cancel: msg => `${msg.author} **||** Command has been cancelled.`,
           retries: 4,
           time: 30000
         }
