@@ -29,9 +29,6 @@
     "turndown": "^6.0.0",
     "@discordjs/opus": "^0.3.2",
     "express": "^4.17.1",
-    "canvas": "^2.6.1",
-    "canvas-constructor": "^3.2.0",
-    "user-instagram": "^2.0.8"
   },
   "engines": {
     "node": "12.x"
