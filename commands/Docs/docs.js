@@ -31,13 +31,13 @@ class DocsCommand extends Command {
         examples: [
           "TextChannel",
           "Client",
-          "ClientUser#setActivity --src=master"
+          "ClientUser#setActivity --src master"
         ]
       },
       category: "Docs",
       ratelimit: 2,
       flags: ["--force", "-f", "--private", "-p"],
-      optionFlags: ["--default=", "--src="]
+      optionFlags: ["--default=", "--src"]
     });
   }
 
@@ -49,7 +49,7 @@ class DocsCommand extends Command {
 
     const source = yield {
       match: "option",
-      flag: "--src="
+      flag: "--src "
     };
 
     const force = yield {
